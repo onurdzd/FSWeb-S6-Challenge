@@ -37,8 +37,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <Search setArama={setArama} arama={arama} veri={veri}></Search>
       <h1 className="Header">Karakterler</h1>
+      <Search setArama={setArama} arama={arama} veri={veri}></Search>
       <Karakter veri={veri}></Karakter>
     </div>
   );

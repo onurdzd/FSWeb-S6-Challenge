@@ -2,12 +2,8 @@ import styled from "styled-components";
 
 const SearchDiv = styled.div`
   padding: 1rem;
-  div {
-    font-weight: 500;
-    padding: 0.3rem;
-  }
-
   input {
+    border-radius: 1rem;
     width: 50%;
     text-align: center;
     font-size: 0.8rem;
@@ -17,9 +13,8 @@ const SearchDiv = styled.div`
 const Search = ({ setArama, arama }) => {
   return (
     <SearchDiv>
-      <div>Karakter Ara</div>
       <input
-        placeholder="Karakter İsmi Yaz"
+        placeholder="Karakter İsmi Ara"
         value={arama}
         onChange={(e) => setArama(e.target.value)}
       ></input>
