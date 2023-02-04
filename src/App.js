@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     if (arama.length > 0) {
-      setVeri([
+      setVeri(() => [
         ...veri.filter((item) =>
           item.name.toLowerCase().includes(arama.toLowerCase())
         ),
@@ -31,7 +31,7 @@ const App = () => {
     } else {
       axios
         .get("https://swapi.dev/api/people/")
-        .then((response) => setVeri(response.data));
+        .then((response) => setVeri(() => response.data));
     }
   }, [arama]);
 
