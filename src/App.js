@@ -3,6 +3,7 @@ import Karakter from "./components/Karakter";
 import Search from "./components/Search";
 import { useState } from "react";
 import axios from "axios";
+import Loading from "./components/Loading";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -13,7 +14,7 @@ const App = () => {
   // sync up with, if any.
 
   const [arama, setArama] = useState("");
-  const [veri, setVeri] = useState([]);
+  const [veri, setVeri] = useState("");
 
   useState(() => {
     axios
@@ -38,8 +39,14 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Karakterler</h1>
-      <Search setArama={setArama} arama={arama} veri={veri}></Search>
-      <Karakter veri={veri}></Karakter>
+      {veri === "" ? (
+        <Loading></Loading>
+      ) : (
+        <>
+          <Search setArama={setArama} arama={arama} veri={veri}></Search>
+          <Karakter veri={veri}></Karakter>
+        </>
+      )}
     </div>
   );
 };

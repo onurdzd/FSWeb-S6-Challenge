@@ -6,11 +6,10 @@ import { useState } from "react";
 
 const Karakter = ({ veri }) => {
   const [keyler, setKeyler] = useState("");
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const KarakterDiv = styled.div`
     display: flex;
     flex-direction: column;
-
     div {
       padding: 0.3rem;
       font-weight: 800;
@@ -24,8 +23,9 @@ const Karakter = ({ veri }) => {
       margin:0 auto;
       width:80%;
       display:block;
+      background-color: #e1dede7b;
     &:hover {
-      transition: 2s;
+      transition: 0.2s;
       transform: scale(1.1);
     }
     span {
@@ -57,6 +57,13 @@ const Karakter = ({ veri }) => {
         color:white;
       }
       
+      span{
+        color:Green
+      }
+
+      p{
+        margin-top:0.2rem
+      }
    `}
   `;
 
@@ -70,7 +77,7 @@ const Karakter = ({ veri }) => {
             setToggle(!toggle);
           }}
         >
-          {(index === keyler) & (toggle === true) ? (
+          {(index === keyler) & toggle ? (
             <KarakterDiv aa>
               {item.name}
               <span>-</span>
@@ -81,16 +88,42 @@ const Karakter = ({ veri }) => {
               <span>+</span>
             </KarakterDiv>
           )}
-          {(index === keyler) & (toggle === true) ? (
+          {(index === keyler) & toggle ? (
             <KarakterDiv ab>
-              <div>{item.gender}</div>
-              <div>{item.height}</div>
-              <div>{item.mass}</div>
-              <div>{item.birth_year}</div>
-              <div>{item.eye_color}</div>
-              <div>{item.hair_color}</div>
-              <div>{item.skin_color}</div>
-              <div>{item.films.length}</div>
+              <div>
+                <span>Gender: </span>
+                {item.gender}
+              </div>
+              <div>
+                <span>Height: </span>
+                {item.height}
+              </div>
+              <div>
+                <span>Mass: </span>
+                {item.mass}
+              </div>
+              <div>
+                <span>Birth-Day: </span>
+                {item.birth_year}
+              </div>
+              <div>
+                <span>Eye-Color: </span>
+                {item.eye_color}
+              </div>
+              <div>
+                <span>Hair Color: </span>
+                {item.hair_color}
+              </div>
+              <div>
+                <span>Skin Color: </span>
+                {item.skin_color}
+              </div>
+              <div>
+                <span>Films:</span>
+                {item.films.map((elem) => (
+                  <p>-{elem}</p>
+                ))}
+              </div>
             </KarakterDiv>
           ) : null}
         </div>
