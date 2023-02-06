@@ -14,13 +14,7 @@ const App = () => {
   // sync up with, if any.
 
   const [arama, setArama] = useState("");
-  const [veri, setVeri] = useState("");
-
-  useState(() => {
-    axios
-      .get("https://swapi.dev/api/people/")
-      .then((response) => setVeri(response.data));
-  }, []);
+  const [veri, setVeri] = useState();
 
   useEffect(() => {
     if (arama.length > 0) {
@@ -39,8 +33,10 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Karakterler</h1>
-      {veri === "" ? (
-        <Loading></Loading>
+      {!veri ? (
+        <>
+          <Loading></Loading>
+        </>
       ) : (
         <>
           <Search setArama={setArama} arama={arama} veri={veri}></Search>

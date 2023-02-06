@@ -14,9 +14,10 @@ const Search = ({ setArama, arama }) => {
   return (
     <SearchDiv>
       <input
+        type="text"
         placeholder="Search Character"
         value={arama}
-        onChange={(e) => setArama(e.target.deger)}
+        onChange={(e) => setArama(e.target.value)}
       ></input>
     </SearchDiv>
   );
